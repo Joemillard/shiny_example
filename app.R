@@ -39,22 +39,25 @@ library(shiny)
 ### trigger a script in the server when you click the action button
 # now let's write a short script in the server to print the inputted text when you interact with the button
 # to do that we need an observeEvent function - the syntax is observeEvent(input$inputId, {any scripts to trigger})
-# 
+# we also need an extra ui function to determine where the text will appear, using textOutput, defined in the same way
+# and then we can render the text in the textOutput location using renderText
+# it'll look something like output$text_out <- renderText(input$text)
+# try that, and you should have an app that'll print the text inputted when you interact with the action button!
 
-# 
+# more complicated Shiny apps are largely just combinations of inputs linked to the server through observe functions
 
 # this is the ui (front end)
 ui <- fluidPage(
-   # actionButton(inputId = "button", label = "Do it!"),
-   # textInput(inputId = "text", label = "Write text here"),
-   # textOutput("text_out")
+    # actionButton(inputId = "button", label = "Do it!"),
+    # textInput(inputId = "text", label = "Write text here"),
+    # textOutput("text_out")
 )
 
 # this is the server (back end)
 server <- function(input, output) {
-  # observeEvent(input$button, {
-    # output$text_out <- renderText(input$text)
-  #})
+   # observeEvent(input$button, {
+     # output$text_out <- renderText(input$text)
+  # })
 }
 
 # this is the ShinyApp function which links the front and back end
